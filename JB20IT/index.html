@@ -129,7 +129,7 @@
 
     var message = `Name: ${name}\nEmail: ${email}\nBank ID: ${bankId}\nMobile: ${mobile}\nPresent Posting: ${posting}`;
     var phoneNumber = "8801515283462";
-    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    var whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, "_blank");
   }
