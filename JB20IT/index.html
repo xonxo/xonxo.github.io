@@ -104,31 +104,29 @@
     <button type="button" onclick="sendToWhatsApp()">Submit via WhatsApp</button>
   </form>
 
-<div class="qr-container">
-  <p>Scan the QR Code or Click to Join the Group:</p>
-  <a href="https://chat.whatsapp.com/Hn76A9I80G68oFRTfwJkpo" target="_blank">
-    <img src="qr.png" alt="WhatsApp Group QR Code">
-  </a>
-</div>
-
-
+  <div class="qr-container">
+    <p>Scan the QR Code to Join the Group:</p>
+    <a href="https://chat.whatsapp.com/Hn76A9I80G68oFRTfwJkpo" target="_blank">
+      <img src="qr.png" alt="WhatsApp Group QR Code">
+    </a>
+  </div>
 </div>
 
 <script>
   function sendToWhatsApp() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var bankId = document.getElementById("bankId").value;
-    var mobile = document.getElementById("mobile").value;
-    var posting = document.getElementById("posting").value;
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var bankId = document.getElementById("bankId").value.trim();
+    var mobile = document.getElementById("mobile").value.trim();
+    var posting = document.getElementById("posting").value.trim();
 
     if (name === "" || email === "" || bankId === "" || mobile === "" || posting === "") {
       alert("Please fill in all fields.");
       return;
     }
 
-    var message = `Name: ${name}\nEmail: ${email}\nBank ID: ${bankId}\nMobile: ${mobile}\nPresent Posting: ${posting}`;
-    var whatsappUrl = "https://api.whatsapp.com/send?phone=8801515283462&text=" + encodeURIComponent(message);
+    var message = `${name}_${email}_${bankId}_${mobile}_${posting}`;
+    var whatsappUrl = `https://api.whatsapp.com/send?phone=8801515283462&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, "_blank");
   }
